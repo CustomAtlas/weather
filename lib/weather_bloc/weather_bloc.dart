@@ -60,7 +60,6 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
           .getCurrentWeather(city)
           .timeout(const Duration(seconds: 5), onTimeout: () {
         errorCenter = 'Ошибка получения данных';
-        emit(WeatherLoadingFailure(exception: 'Lost internet connection'));
         throw const SocketException('');
       });
       emit(WeatherCurrentLoaded());
@@ -91,7 +90,6 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       weathers = await client
           .getWeatherPerDays(city)
           .timeout(const Duration(seconds: 8), onTimeout: () {
-        emit(WeatherLoadingFailure(exception: 'Ошибка получения данных'));
         throw const SocketException('');
       });
       emit(WeatherPerDaysLoaded());

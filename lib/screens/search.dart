@@ -119,7 +119,7 @@ class _SearchButtonWidget extends StatelessWidget {
       },
       child: ElevatedButton(
           style: const ButtonStyle(
-              backgroundColor: MaterialStatePropertyAll(Colors.cyan)),
+              backgroundColor: WidgetStatePropertyAll(Colors.cyan)),
           // Check weather loading to not push buttons many times
           // and not to load same data many times at one time
           onPressed: () => bloc.state is WeatherLoading
